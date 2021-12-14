@@ -1,9 +1,10 @@
 package ru.bobretsoff.parser.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import ru.bobretsoff.parser.model.Company;
 
 @Repository
-public interface CompanyRepository extends JpaRepository<Company,Long> {
+public interface CompanyRepository extends JpaRepository<Company,Long>, PagingAndSortingRepository<Company, Long> {
 }
