@@ -1,11 +1,11 @@
 package ru.bobretsoff.parser.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.bobretsoff.parser.model.Company;
+import ru.bobretsoff.parser.model.CompanyProjection;
 import ru.bobretsoff.parser.repository.CompanyRepository;
 
 import java.util.List;
@@ -17,7 +17,6 @@ public class CompanyServiceImpl implements CompanyService {
     /**  автоинъекция интерфейса repository.  */
     @Autowired
     private CompanyRepository repository;
-
 
 
     @Override
@@ -37,8 +36,8 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public List<Company> getByTicker(String ticker) {
-        return repository.findByName(ticker);
+    public List<CompanyProjection> getByTicker(String ticker) {
+        return repository.findByTicker(ticker);
     }
 
 }

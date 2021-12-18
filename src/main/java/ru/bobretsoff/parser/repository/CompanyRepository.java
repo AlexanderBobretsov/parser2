@@ -6,6 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.bobretsoff.parser.model.Company;
+import ru.bobretsoff.parser.model.CompanyProjection;
 
 import java.util.List;
 
@@ -13,8 +14,7 @@ import java.util.List;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long>, PagingAndSortingRepository<Company, Long> {
 
-    /** собственный JPQL запрос. */
-    @Query(value = "select c.id, c.price from Company c where c.ticker = :ticker")
-    List<Company> findByName(@Param("ticker") String ticker);
+   /** выводим историю цен по тикеру.  */
+   List<CompanyProjection> findByTicker(@Param("ticker") String ticker);
 
 }

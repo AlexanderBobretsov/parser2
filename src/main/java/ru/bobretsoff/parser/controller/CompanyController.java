@@ -1,14 +1,18 @@
 package ru.bobretsoff.parser.controller;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import ru.bobretsoff.parser.model.Company;
+import ru.bobretsoff.parser.model.CompanyProjection;
 import ru.bobretsoff.parser.service.CompanyService;
 
+import java.util.Collection;
 import java.util.List;
 
 /** указание специального контроллера, используемого в веб-сервисах RESTFul, и эквивалента @Controller + @ResponseBody. */
@@ -33,7 +37,7 @@ public class CompanyController {
 
     /** обработчик get-запроса /api/companies/{ticker}/prices. */
     @GetMapping("/api/companies/{ticker}/prices")
-    public List<Company> getByTicker(@PathVariable("ticker") String ticker) {
+    public List<CompanyProjection> getByTicker(@PathVariable("ticker") String ticker) {
         return companyService.getByTicker(ticker);
     }
 

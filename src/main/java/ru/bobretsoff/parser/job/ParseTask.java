@@ -56,6 +56,7 @@ public class ParseTask {
                 obj.setPrice(vPrice);
 
                 companyService.save(obj);
+
                 k = k + 9;
 
             }
